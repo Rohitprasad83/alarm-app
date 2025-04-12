@@ -6,7 +6,7 @@ export default function Alarms() {
 
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ fontSize: 24, marginBottom: 20 }}>Your Alarms</Text>
+            <Button title={"Premium"} />
         </View>
     );
 }
