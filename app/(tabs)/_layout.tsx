@@ -5,7 +5,7 @@ export default function TabLayout() {
     return (
         <Tabs>
             <Tabs.Screen
-                name="alarms"
+                name="alarms/index"
                 options={{
                     title: 'Alarms',
                     headerShown: false,
@@ -15,18 +15,20 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="reports"
+                name="reports/index"
                 options={{
                     title: 'Reports',
+                    headerShown: false,
                     tabBarIcon: ({color, size}) => (
                         <PhosphorIcon name="ChartBar" color={color} size={size} weight="fill"/>
                     ),
                 }}
             />
             <Tabs.Screen
-                name="settings"
+                name="settings/index"
                 options={{
                     title: 'Settings',
+                    headerShown: false,
                     tabBarIcon: ({color, size}) => (
                         <PhosphorIcon name="Gear" color={color} size={size} weight="fill"/>
                     ),
