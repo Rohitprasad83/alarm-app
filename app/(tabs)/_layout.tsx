@@ -1,16 +1,34 @@
 import {Tabs} from 'expo-router';
 import PhosphorIcon from '../../components/PhosphorIcon';
+import TabBarIcon from "@/components/TabBarIcon";
 
 export default function TabLayout() {
     return (
-        <Tabs>
+        <Tabs
+            screenOptions={{
+                tabBarShowLabel: false,
+                    tabBarItemStyle: {
+                      width: "100%",
+                      height: "100%",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    },
+                tabBarStyle: {
+                    minHeight:70,
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    backgroundColor: '#EBEBEB',
+                    borderTopWidth: 0,
+                },
+            }}
+            >
             <Tabs.Screen
                 name="alarms/index"
                 options={{
                     title: 'Alarms',
                     headerShown: false,
-                    tabBarIcon: ({color, size}) => (
-                        <PhosphorIcon name="Alarm" color={color} size={size} weight="fill"/>
+                    tabBarIcon: ({focused}) => (
+                        <TabBarIcon icon={"Alarm"} iconText={"Alarms"} focused={focused}/>
                     ),
                 }}
             />
@@ -19,8 +37,8 @@ export default function TabLayout() {
                 options={{
                     title: 'Reports',
                     headerShown: false,
-                    tabBarIcon: ({color, size}) => (
-                        <PhosphorIcon name="ChartBar" color={color} size={size} weight="fill"/>
+                    tabBarIcon: ({focused}) => (
+                        <TabBarIcon icon={"ChartBar"} iconText={"Reports"} focused={focused}/>
                     ),
                 }}
             />
@@ -29,8 +47,8 @@ export default function TabLayout() {
                 options={{
                     title: 'Settings',
                     headerShown: false,
-                    tabBarIcon: ({color, size}) => (
-                        <PhosphorIcon name="Gear" color={color} size={size} weight="fill"/>
+                    tabBarIcon: ({focused}) => (
+                        <TabBarIcon icon={"Gear"} iconText={"Settings"} focused={focused}/>
                     ),
                 }}
             />
