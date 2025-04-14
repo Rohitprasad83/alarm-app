@@ -31,7 +31,8 @@ export default function Alarms() {
                         </View>
                     </View>
 
-                    <View className="flex-row justify-between mt-4 gap-2">
+                    {/*change the margin-top when other components are added*/}
+                    <View className="flex-row justify-between mt-96 gap-2">
                         <View className="bg-white rounded-xl p-4 flex-1">
                             <View className="flex-row items-start space-x-3">
                                 <View className="bg-gray-200 p-2 rounded-full">
