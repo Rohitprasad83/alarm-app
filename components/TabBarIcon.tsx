@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import { View, Text } from 'react-native';
 import PhosphorIcon from '@/components/PhosphorIcon';
 
 type TabBarIconProps = {
@@ -8,19 +8,27 @@ type TabBarIconProps = {
     focused: boolean;
 };
 
-const TabBarIcon: React.FC<TabBarIconProps> = ({icon, iconText, focused}) => {
+const TabBarIcon: React.FC<TabBarIconProps> = ({ icon, iconText, focused }) => {
     return (
         <View
-            className={`flex-row items-center justify-center space-x-2 px-4 py-4 rounded-full mt-4 ${focused ? '' : 'bg-transparent'}`}
-            style={{backgroundColor: focused ? "#DCDBDB" : 'transparent'}}>
-            <PhosphorIcon name={icon} size={20} weight={focused ? "bold" : "regular"}
-                          color={focused ? "#333537" : "gray"}/>
-
-            {focused && <Text className="text-gray-600 font-bold">
-                {iconText}
-            </Text>}
+            className={`flex-row items-center justify-center px-3 py-3 rounded-full ${
+                focused ? 'bg-gray-300' : 'bg-transparent'
+            }`}
+            style={{ minWidth: 120 }} // Ensure minimum width
+        >
+            <PhosphorIcon
+                name={icon}
+                size={20}
+                weight={focused ? 'bold' : 'regular'}
+                color={focused ? '#333537' : 'gray'}
+            />
+            {focused && (
+                <Text className="ml-2 text-gray-600 font-bold">
+                    {iconText}
+                </Text>
+            )}
         </View>
     );
 };
 
-export default TabBarIcon;
+export default React.memo(TabBarIcon);
