@@ -40,7 +40,7 @@ export default function Alarms() {
                             </View>
                             <View className="flex-1">
                                 <Text className="text-gray-600 font-bold text-md">Control volume</Text>
-                                <Text className="text-gray-500 text-sm" numberOfLines={1}>Volume is too low</Text>
+                                <Text className="text-gray-500 text-sm">Volume is too low</Text>
                             </View>
                         </View>
                         <View className="bg-white rounded-xl p-4 flex-1">
@@ -51,7 +51,7 @@ export default function Alarms() {
                             </View>
                             <View className="flex-1">
                                 <Text className="text-gray-600 font-bold text-md">Manage Vacation</Text>
-                                <Text className="text-gray-500 text-sm" numberOfLines={1}>Upcoming: None</Text>
+                                <Text className="text-gray-500 text-sm">Upcoming: None</Text>
                             </View>
                         </View>
                     </View>

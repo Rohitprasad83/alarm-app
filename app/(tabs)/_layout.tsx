@@ -7,21 +7,21 @@ export default function TabLayout() {
         <Tabs
             screenOptions={{
                 tabBarShowLabel: false,
-                    tabBarItemStyle: {
-                      width: "100%",
-                      height: "100%",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    },
+                tabBarItemStyle: {
+                    paddingHorizontal: 16,
+                    width: '100%',
+                },
                 tabBarStyle: {
-                    minHeight:70,
+                    minHeight: 70,
                     paddingTop: 10,
                     paddingBottom: 10,
                     backgroundColor: '#EBEBEB',
                     borderTopWidth: 0,
+                    borderTopLeftRadius: 16,
+                    borderTopRightRadius: 16,
                 },
             }}
-            >
+        >
             <Tabs.Screen
                 name="alarms/index"
                 options={{
