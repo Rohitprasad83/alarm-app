@@ -3,7 +3,6 @@ import {useRouter} from 'expo-router';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import PhosphorIcon from "@/components/PhosphorIcon";
 import FloatingButton from "@/components/FloatingButton";
-import {Plus} from "phosphor-react-native";
 
 export default function Alarms() {
     const router = useRouter();
