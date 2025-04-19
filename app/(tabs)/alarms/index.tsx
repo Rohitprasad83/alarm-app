@@ -18,7 +18,7 @@ export default function Alarms() {
                             <PhosphorIcon name="CaretRight" color={"white"} size={16}/>
                         </Pressable>
 
-                        <PhosphorIcon name="DotsThreeVertical" size={36} weight="bold"/>
+                        <PhosphorIcon name="DotsThreeVertical" size={24} weight="bold"/>
                     </View>
 
                     <View className="bg-white p-4 rounded-xl flex-row items-center justify-between mt-4">
@@ -31,7 +31,19 @@ export default function Alarms() {
                         </View>
                     </View>
 
-
+                    <View className="p-4 rounded-xl flex-1 flex-row items-center justify-between mt-4">
+                        {/*Next Alarm Container*/}
+                        <View className="flex-1 items-center space-y-2 gap-2">
+                            <View className="flex-1 items-center gap-2">
+                                <Text className="text-xl font-medium text-gray-600">Next alarm in</Text>
+                                <Text className="text-4xl font-semibold text-gray-600">12 h: 28m</Text>
+                            </View>
+                            <Pressable className="bg-gray-300 h-12 w-36 px-4 py-3 flex-row rounded-full items-center justify-center space-x-4">
+                                <Text className="text-gray-600 text-sm font-bold w-20">Go to alarm</Text>
+                                <PhosphorIcon name="CaretRight" size={16} weight="bold"/>
+                            </Pressable>
+                        </View>
+                    </View>
 
 
                     {/*change the margin-top when other components are added*/}
@@ -60,7 +72,7 @@ export default function Alarms() {
                         </View>
                     </View>
                 </ScrollView>
-                <FloatingButton />
+                <FloatingButton/>
             </SafeAreaView>
         </SafeAreaProvider>
     );
