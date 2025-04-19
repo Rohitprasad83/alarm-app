@@ -14,8 +14,8 @@ export default function Alarms() {
                     <View className="flex-row justify-between items-center">
                         <Pressable
                             className="bg-gray-800 px-4 py-4 rounded-full flex-row items-center justify-center space-x-2 w-32">
-                            <Text className="text-gray-100 text-center font-bold">Premium </Text>
-                            <PhosphorIcon name="GreaterThan" color={"white"} size={18} weight="bold"/>
+                            <Text className="text-gray-100 text-center font-bold">Premium</Text>
+                            <PhosphorIcon name="CaretRight" color={"white"} size={16}/>
                         </Pressable>
 
                         <PhosphorIcon name="DotsThreeVertical" size={36} weight="bold"/>
@@ -30,6 +30,9 @@ export default function Alarms() {
                             <PhosphorIcon name="PencilSimple" size={24} weight="bold"/>
                         </View>
                     </View>
+
+
+
 
                     {/*change the margin-top when other components are added*/}
                     <View className="flex-row justify-between mt-96 gap-2">
