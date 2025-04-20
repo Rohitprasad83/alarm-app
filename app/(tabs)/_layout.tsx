@@ -22,7 +22,7 @@ export default function TabLayout() {
             }}
         >
             <Tabs.Screen
-                name="alarms/index"
+                name="alarms"
                 options={{
                     title: 'Alarms',
                     headerShown: false,
@@ -32,7 +32,7 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="reports/index"
+                name="reports"
                 options={{
                     title: 'Reports',
                     headerShown: false,
@@ -42,7 +42,7 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="settings/index"
+                name="settings"
                 options={{
                     title: 'Settings',
                     headerShown: false,

@@ -3,22 +3,24 @@ import { Stack } from 'expo-router';
 
 export default function AlarmsLayout() {
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerShown: false // Hide header by default
+      }}
+    >
       <Stack.Screen 
-        name="index" 
-        options={{ 
-          headerShown: false // Hide header for main alarms screen
-        }} 
+        name="index"
+        options={{
+          headerShown: false // Explicitly hide header for index
+        }}
       />
       <Stack.Screen 
-        name="addAlarm" 
-        options={{ 
+        name="addAlarm"
+        options={{
+          headerShown: true, // Show header for add alarm screen
           presentation: 'modal',
-          headerTitle: 'Add Alarm',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }} 
+          headerTitle: 'Add Alarm'
+        }}
       />
     </Stack>
   );

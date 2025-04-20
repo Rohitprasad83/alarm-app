@@ -129,9 +129,6 @@ export default function Alarms() {
                                 isEnabled={alarm.isEnabled}
                             />
                         ))}
-
-
-
                     </View>
                 </ScrollView>
                 {/*Add alarm button*/}
