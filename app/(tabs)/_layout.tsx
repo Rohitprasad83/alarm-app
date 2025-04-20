@@ -1,5 +1,4 @@
 import {Tabs} from 'expo-router';
-import PhosphorIcon from '../../components/PhosphorIcon';
 import TabBarIcon from "@/components/TabBarIcon";
 
 export default function TabLayout() {

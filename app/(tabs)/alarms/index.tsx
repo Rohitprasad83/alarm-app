@@ -134,6 +134,7 @@ export default function Alarms() {
 
                     </View>
                 </ScrollView>
+                {/*Add alarm button*/}
                 <FloatingButton/>
             </SafeAreaView>
         </SafeAreaProvider>
