@@ -56,68 +56,71 @@ export default function Alarms() {
             <SafeAreaView className="flex-1 bg-grey-200" edges={['top']}>
                 <ScrollView className="px-4 mt-4 ">
                     <View className="flex-1 gap-8">
-                        <View className="flex-row justify-between items-center">
-                            <Pressable
-                                className="bg-gray-800 px-4 py-4 rounded-full flex-row items-center justify-center space-x-2 w-32">
-                                <Text className="text-gray-100 text-center font-bold">Premium</Text>
-                                <PhosphorIcon name="CaretRight" color={"white"} size={16}/>
-                            </Pressable>
-
-                            <PhosphorIcon name="DotsThreeVertical" size={24} weight="bold"/>
-                        </View>
-
-                        <View className="bg-white p-4 rounded-xl flex-row items-center justify-between mt-4">
-                            <View className="gap-2 flex-1">
-                                <Text className="text-gray-600 text-lg font-bold">My Goal of the day</Text>
-                                <Text className="text-gray-500">Finish the presentations today</Text>
-                            </View>
-                            <View className="bg-gray-200 p-2 rounded-full">
-                                <PhosphorIcon name="PencilSimple" size={24} weight="bold"/>
-                            </View>
-                        </View>
-
-                        {/*Cat Svg container*/}
-                        <View className="flex-1 items-center justify-center relative ">
-                            <AlarmPageSvgCat/>
-                            <View className="flex-row items-center px-4 py-2 absolute left-3">
-                                <View className="bg-white w-28 h-20 rounded-xl px-3 py-2 items-center justify-center">
-                                    <Text className="text-gray-600 font-semibold text-xs">Time to wake up, lazy ass
-                                        fuck!</Text>
-                                </View>
-                                <View className="flex-row items-center">
-                                    {/* Triangle Tail */}
-                                    <View
-                                        className="w-0 h-0 mt-6"
-                                        style={{
-                                            borderTopWidth: 9,
-                                            borderBottomWidth: 9,
-                                            borderLeftWidth: 9,
-                                            borderTopColor: 'transparent',
-                                            borderBottomColor: 'transparent',
-                                            borderLeftColor: 'white',
-                                        }}
-                                    />
-                                </View>
-
-                            </View>
-                        </View>
-                        <View className="p-4 rounded-xl flex-1 flex-row items-center justify-between">
-                            {/*Next Alarm Container*/}
-                            <View className="flex-1 items-center space-y-2 gap-2">
-                                <View className="flex-1 items-center gap-2">
-                                    <Text className="text-xl font-medium text-gray-600">Next alarm in</Text>
-                                    <Text className="text-4xl font-semibold text-gray-600">12 h: 28m</Text>
-                                </View>
+                        <View className="gap-4">
+                            <View className="flex-row justify-between items-center">
                                 <Pressable
-                                    className="bg-gray-300 h-12 w-36 px-4 py-3 flex-row rounded-full items-center justify-center space-x-4">
-                                    <Text className="text-gray-600 text-sm font-bold w-20">Go to alarm</Text>
-                                    <PhosphorIcon name="CaretRight" size={16} weight="bold"/>
+                                    className="bg-gray-800 px-4 py-4 rounded-full flex-row items-center justify-center space-x-2 w-32">
+                                    <Text className="text-gray-100 text-center font-bold">Premium</Text>
+                                    <PhosphorIcon name="CaretRight" color={"white"} size={16}/>
                                 </Pressable>
+
+                                <PhosphorIcon name="DotsThreeVertical" size={24} weight="bold"/>
+                            </View>
+
+                            <View className="bg-white p-4 rounded-xl flex-row items-center justify-between">
+                                <View className="gap-2 flex-1">
+                                    <Text className="text-gray-600 text-lg font-bold">My Goal of the day</Text>
+                                    <Text className="text-gray-500">Finish the presentations today</Text>
+                                </View>
+                                <View className="bg-gray-200 w-12 h-12 rounded-full items-center justify-center">
+                                    <PhosphorIcon name="PencilSimple" size={24} weight="bold"/>
+                                </View>
                             </View>
                         </View>
 
+                        <View>
+                            {/*Cat Svg container*/}
+                            <View className="flex-1 items-center justify-center relative ">
+                                <AlarmPageSvgCat/>
+                                <View className="flex-row items-center px-4 py-2 absolute left-8 top-6">
+                                    <View
+                                        className="bg-white w-28 h-20 rounded-xl px-3 py-2 items-center justify-center">
+                                        <Text className="text-gray-600 font-semibold text-xs">Time to wake up, lazy ass
+                                            fuck!</Text>
+                                    </View>
+                                    <View className="flex-row items-center">
+                                        {/* Triangle Tail */}
+                                        <View
+                                            className="w-0 h-0 mt-6"
+                                            style={{
+                                                borderTopWidth: 9,
+                                                borderBottomWidth: 9,
+                                                borderLeftWidth: 9,
+                                                borderTopColor: 'transparent',
+                                                borderBottomColor: 'transparent',
+                                                borderLeftColor: 'white',
+                                            }}
+                                        />
+                                    </View>
 
-                        {/*change the margin-top when other components are added*/}
+                                </View>
+                            </View>
+                            <View className="p-4 rounded-xl flex-1 flex-row items-center justify-between">
+                                {/*Next Alarm Container*/}
+                                <View className="flex-1 items-center space-y-2 gap-2">
+                                    <View className="flex-1 items-center gap-2">
+                                        <Text className="text-xl font-medium text-gray-600">Next alarm in</Text>
+                                        <Text className="text-4xl font-semibold text-gray-600">12 h: 28m</Text>
+                                    </View>
+                                    <Pressable
+                                        className="bg-gray-300 h-12 w-36 px-4 py-3 flex-row rounded-full items-center justify-center space-x-4">
+                                        <Text className="text-gray-600 text-sm font-bold w-20">Go to alarm</Text>
+                                        <PhosphorIcon name="CaretRight" size={16} weight="bold"/>
+                                    </Pressable>
+                                </View>
+                            </View>
+
+                        </View>
                         <View className="flex-row justify-between gap-2">
                             <View className="bg-white rounded-xl p-4 flex-1">
                                 <View className="flex-row items-start space-x-3">
