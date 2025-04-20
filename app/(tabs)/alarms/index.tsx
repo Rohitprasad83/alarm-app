@@ -4,6 +4,7 @@ import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import PhosphorIcon from "@/components/PhosphorIcon";
 import FloatingButton from "@/components/FloatingButton";
 import Alarm from "@/components/Alarm";
+import AlarmPageSvgCat from "@/components/AlarmPageSvgCat";
 
 
 const alarmData = {
@@ -34,7 +35,7 @@ const alarmData = {
             alarmName: "Alarm name",
             alarmTime: "12:48 AM",
             isEnabled: true,
-            occurrence: ["Monday", "Tuesday","Wednesday", "Thursday", "Friday","Saturday","Sunday"],
+            occurrence: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         },
         {
             id: 123468,
@@ -44,7 +45,7 @@ const alarmData = {
             occurrence: "Everyday",
             puzzleCount: 5,
         },
-        ]
+    ]
 }
 
 export default function Alarms() {
@@ -54,7 +55,7 @@ export default function Alarms() {
         <SafeAreaProvider>
             <SafeAreaView className="flex-1 bg-grey-200" edges={['top']}>
                 <ScrollView className="px-4 mt-4 ">
-                    <View className="flex-1 gap-4">
+                    <View className="flex-1 gap-8">
                         <View className="flex-row justify-between items-center">
                             <Pressable
                                 className="bg-gray-800 px-4 py-4 rounded-full flex-row items-center justify-center space-x-2 w-32">
@@ -75,7 +76,32 @@ export default function Alarms() {
                             </View>
                         </View>
 
-                        <View className="p-4 rounded-xl flex-1 flex-row items-center justify-between mt-64">
+                        {/*Cat Svg container*/}
+                        <View className="flex-1 items-center justify-center relative ">
+                            <AlarmPageSvgCat/>
+                            <View className="flex-row items-center px-4 py-2 absolute left-3">
+                                <View className="bg-white w-28 h-20 rounded-xl px-3 py-2 items-center justify-center">
+                                    <Text className="text-gray-600 font-semibold text-xs">Time to wake up, lazy ass
+                                        fuck!</Text>
+                                </View>
+                                <View className="flex-row items-center">
+                                    {/* Triangle Tail */}
+                                    <View
+                                        className="w-0 h-0 mt-6"
+                                        style={{
+                                            borderTopWidth: 9,
+                                            borderBottomWidth: 9,
+                                            borderLeftWidth: 9,
+                                            borderTopColor: 'transparent',
+                                            borderBottomColor: 'transparent',
+                                            borderLeftColor: 'white',
+                                        }}
+                                    />
+                                </View>
+
+                            </View>
+                        </View>
+                        <View className="p-4 rounded-xl flex-1 flex-row items-center justify-between">
                             {/*Next Alarm Container*/}
                             <View className="flex-1 items-center space-y-2 gap-2">
                                 <View className="flex-1 items-center gap-2">
