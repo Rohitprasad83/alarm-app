@@ -1,23 +1,40 @@
 import {useRouter, Stack} from 'expo-router';
-import {View, Text, ScrollView, Pressable, TouchableOpacity, TextInput} from 'react-native';
+import {View, Text, ScrollView, Pressable, TouchableOpacity, TextInput, FlatList} from 'react-native';
 import PhosphorIcon from "@/components/PhosphorIcon";
 import VerticalNumberPicker from "@/components/VerticalNumberPicker";
-import Slider from '@react-native-community/slider';
-import {useState, useEffect, useMemo} from "react";
-import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+import {useState} from "react";
+import {SafeAreaView} from 'react-native-safe-area-context';
+import SoundControl from '@/components/SoundControl';
+import Challenge from "@/components/Challenge";
+
 
 type amOrPm = "AM" | "PM";
 
-function debounce<T extends (...args: any[]) => void>(
-    func: T,
-    wait: number
-): (...args: Parameters<T>) => void {
-    let timeout: NodeJS.Timeout;
-    return (...args: Parameters<T>) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func(...args), wait);
-    };
+type challenge = {
+    mainChallenge: string;
+    subChallenge: string,
+    iconName: string;
 }
+
+const challenges = [
+    {
+        mainChallenge: "Memory",
+        subChallenge: "3x Easy",
+        iconName: "Brain",
+    },
+    {
+        mainChallenge: "Walk",
+        subChallenge: "200 steps",
+        iconName: "PersonSimpleWalk",
+    },
+    {
+        mainChallenge: "Equation",
+        subChallenge: "Easy",
+        iconName: "MathOperations",
+    },
+
+]
+
 
 export default function AddAlarm() {
     const [clock, setClock] = useState<amOrPm>("AM");
@@ -33,28 +50,14 @@ export default function AddAlarm() {
         setIsChecked(!isChecked);
     };
 
-    const [sound, setSound] = useState(50);
-    
-    const debouncedSetSound = useMemo(
-        () => debounce((value: number) => {
-            setSound(value);
-        }, 100), // 100ms delay
-        []
-    );
-
-    useEffect(() => {
-        return () => {
-            debouncedSetSound.cancel?.();
-        };
-    }, []);
 
     const router = useRouter();
 
     return (
         <>
-            <Stack.Screen options={{title: 'Add Alarm', headerShown: false}}/>
-            <SafeAreaView className="flex-1" style={{backgroundColor: '#EBEBEB'}}>
-                <ScrollView style={{flex: 1, gap: 16, padding: 16}}>
+            <SafeAreaView style={{flex: 1, backgroundColor: '#EBEBEB'}}>
+                <Stack.Screen options={{title: 'Add Alarm', headerShown: false}}/>
+                <ScrollView style={{flex: 1, gap: 16, padding: 16, backgroundColor: '#EBEBEB'}}>
                     <View className="gap-5">
                         <View className="flex-1 flex-row items-center justify-between">
                             <View>
@@ -73,7 +76,7 @@ export default function AddAlarm() {
                         <View
                             className="flex-1 items-center justify-center bg-gray-100 rounded-3xl px-4 py-6 gap-5 mt-16">
                             <Text className="text-gray-600 text-base font-semibold">Alarm Time</Text>
-                            <View className="flex-1 flex-row items-center justify-between gap-4">
+                            <View className="flex-row items-center justify-between gap-4 h-[180px]">
                                 <VerticalNumberPicker start={1} end={12} initialIndex={5}/>
                                 <Text className="text-gray-600 text-[32px] font-semibold">:</Text>
                                 <VerticalNumberPicker start={0} end={59} initialIndex={35}/>
@@ -151,49 +154,63 @@ export default function AddAlarm() {
                         </View>
 
                         <View
-                            className="flex-1 items-center justify-items-start bg-gray-100 rounded-3xl px-4 py-6 gap-5 ">
+                            className="flex-1 items-center justify-items-start bg-gray-100 rounded-3xl px-4 py-6 gap-5">
+                            <View className="flex-1 w-full">
+                                <Text className="text-base font-semibold text-gray-600">Challenges</Text>
+                            </View>
+
+                            <View className="flex-1 w-full flex-row gap-2 items-center justify-items-start">
+                                <View className="w-9 h-9 rounded-full bg-orange-300 items-center justify-center">
+                                    <PhosphorIcon name={"Plus"} color={"white"} size={12.5} weight={"bold"}/>
+                                </View>
+                                <View className="flex-1 w-full items-start justify-center gap-1">
+                                    <Text className="text-sm font-semibold text-gray-600">Tap to add</Text>
+                                    <Text className="text-sm font-semibold text-gray-600">3/5 left</Text>
+                                </View>
+                            </View>
+
+                            <FlatList
+                                data={challenges}
+                                horizontal={true}
+                                showsHorizontalScrollIndicator={false}
+                                keyExtractor={(item, index) => index.toString()}
+                                renderItem={({item}) => (
+                                    <Challenge mainChallenge={item.mainChallenge} subChallenge={item.subChallenge}
+                                               iconName={item.iconName}/>
+                                )}
+                                className="gap-2"
+                                contentContainerStyle={{gap: 8}}
+                            />
+
+                        </View>
+
+                        <View
+                            className="flex-1 items-center justify-items-start bg-gray-100 rounded-3xl px-4 py-6 gap-5">
                             <View className="flex-1 w-full gap-1">
                                 <View className="flex-1 w-full items-start justify-center">
                                     <Text className="text-gray-600 text-base font-semibold">Sound</Text>
                                 </View>
 
-                                <View className="flex-1 w-full gap-1/2">
-                                <View className="flex-1 w-full items-start justify-center">
-                                    <Text className="text-gray-600 text-base font-semibold">Chimes</Text>
-                                </View>
-                                <View className="flex-1 w-full flex-row items-center justify-items-start gap-3">
-                                    <View className="flex-row items-center gap-1">
-                                        <PhosphorIcon name={"Vibrate"} color={"#333537"} weight={"bold"} size={12}/>
-                                        <Text className="text-gray-600 text-xs font-semibold">Vibration On</Text>
+                                <View className="flex-1 w-full gap-8">
+                                    <View className="flex-1 w-full items-start justify-center">
+                                        <Text className="text-gray-600 text-base font-semibold">Chimes</Text>
+                                        <View className="flex-1 w-full flex-row items-center justify-items-start gap-3">
+                                            <View className="flex-row items-center gap-1">
+                                                <PhosphorIcon name={"Vibrate"} color={"#333537"} weight={"bold"}
+                                                              size={12}/>
+                                                <Text className="text-gray-600 text-xs font-semibold">Vibration
+                                                    On</Text>
+                                            </View>
+                                            <View className="flex-row items-center gap-1">
+                                                <PhosphorIcon name={"Steps"} color={"#333537"} weight={"bold"}
+                                                              size={12}/>
+                                                <Text className="text-gray-600 text-xs font-semibold">Gentle Wake
+                                                    up</Text>
+                                            </View>
+                                        </View>
                                     </View>
-                                    <View className="flex-row items-center gap-1">
-                                        <PhosphorIcon name={"Steps"} color={"#333537"} weight={"bold"} size={12}/>
-                                        <Text className="text-gray-600 text-xs font-semibold">Gentle Wake up</Text>
-                                    </View>
-                                </View>
                                 </View>
                             </View>
-
-                            <View className="flex-1 w-full items-start justify-center">
-                                {/* Slider */}
-                                <Slider
-                                    style={{
-                                        width: '100%',
-                                        transform: [{ scaleY: 2 }],
-                                        height: 40
-                                    }}
-                                    value={sound}
-                                    onValueChange={handleSoundChange}
-                                    minimumValue={0}
-                                    maximumValue={100}
-                                    step={1}
-                                    minimumTrackTintColor="#ED7F50"
-                                    maximumTrackTintColor="#EBEBEB"
-                                    thumbTintColor="#ED7F50"
-                                />
-                            </View>
-
-                            <Text className="text-gray-600 text-lg font-semibold mt-4">Value: {sound}</Text>
                         </View>
 
                         <View className="flex-1 w-full mb-16">
