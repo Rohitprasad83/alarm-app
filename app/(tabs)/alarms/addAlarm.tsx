@@ -74,7 +74,7 @@ export default function AddAlarm() {
                         </View>
 
                         <View
-                            className="flex-1 items-center justify-center bg-gray-100 rounded-3xl px-4 py-6 gap-5 mt-16">
+                            className="flex-1 items-center justify-center bg-gray-100 rounded-3xl px-4 py-6 gap-5">
                             <Text className="text-gray-600 text-base font-semibold">Alarm Time</Text>
                             <View className="flex-row items-center justify-between gap-4 h-[180px]">
                                 <VerticalNumberPicker start={0} end={59} initialIndex={5}/>

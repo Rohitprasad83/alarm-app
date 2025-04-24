@@ -7,7 +7,7 @@ const FloatingButton = () => {
     return (
         <View className="absolute bottom-24 right-6">
             <Pressable
-                className="bg-gray-800 w-16 h-16 rounded-full items-center justify-center shadow-lg"
+                className="bg-gray-600 w-16 h-16 rounded-full items-center justify-center shadow-lg"
                 onPress={() =>
                     router.push('/(tabs)/alarms/addAlarm')}
             >

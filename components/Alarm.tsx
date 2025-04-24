@@ -28,28 +28,28 @@ const Alarm: React.FC<AlarmProps> = ({alarmName, alarmTime, occurrence, puzzleCo
     ];
 
     return (
-        <View className="flex-1 justify-between items-stretch bg-white px-4 py-4 rounded-xl gap-1">
+        <View className="flex-1 justify-between items-stretch bg-gray-100 px-4 py-4 rounded-xl gap-1">
             {alarmName &&
                 <Text className="text-xl text-gray-600 font-normal text-left">{alarmName}</Text>}
 
             {/* Middle section */}
             <View className="items-center flex-1 flex-row justify-between">
-                <Text className="text-3xl text-gray-600 font-bold">{alarmTime}</Text>
+                <Text className="text-3xl text-gray-600 font-semibold">{alarmTime}</Text>
                 <CustomSwitch isEnabled={enabled}/>
             </View>
 
             {/* Bottom section */}
             <View className="items-center flex-1 flex-row justify-between">
                 {occurrence === "Everyday" ? (
-                    <Text className="text-md text-gray-600 font-medium">{occurrence}</Text>
+                    <Text className="text-md text-gray-600 font-semibold">{occurrence}</Text>
                 ) : (
                     <View className="flex-row">
                         {weekDays.map((day, index) => (
                             <Text
                                 key={index}
-                                className={`mx-1 text-md ${
+                                className={`mx-1 text-md font-semibold ${
                                     occurrence.includes(day.full)
-                                        ? 'text-gray-600 font-medium'
+                                        ? 'text-gray-600'
                                         : 'text-gray-300'
                                 }`}
                             >
@@ -62,7 +62,7 @@ const Alarm: React.FC<AlarmProps> = ({alarmName, alarmTime, occurrence, puzzleCo
                 {puzzleCount &&
                     <View className="flex-row items-center gap-1">
                         <PhosphorIcon name="PuzzlePiece" size={16} weight={"bold"}/>
-                        <Text className="font-semibold">x 3</Text>
+                        <Text className="font-bold">x 3</Text>
                     </View>
                 }
             </View>

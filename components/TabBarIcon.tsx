@@ -11,7 +11,7 @@ type TabBarIconProps = {
 const TabBarIcon: React.FC<TabBarIconProps> = ({ icon, iconText, focused }) => {
     return (
         <View
-            className={`flex-row items-center justify-center px-3 py-3 rounded-full ${
+            className={`flex-row items-center w-1/3 justify-center px-3 py-3 rounded-full ${
                 focused ? 'bg-gray-300' : 'bg-transparent'
             }`}
             style={{ minWidth: 120 }} // Ensure minimum width
