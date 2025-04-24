@@ -209,6 +209,7 @@ export default function AddAlarm() {
                                             </View>
                                         </View>
                                     </View>
+                                    <SoundControl />
                                 </View>
                             </View>
                         </View>

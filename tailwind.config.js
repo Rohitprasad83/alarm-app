@@ -10,7 +10,7 @@ module.exports = {
     presets: [require("nativewind/preset")],
     theme: {
         extend: {
-            grey: {
+            gray: {
                 100: "#F8F8F8",
                 200: "#EBEBEB",
                 300: "#DCDBDB",

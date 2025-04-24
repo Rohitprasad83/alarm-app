@@ -32,7 +32,13 @@ export default function VerticalNumberPicker({ start, end, initialIndex = 0 }: P
     }, [initialIndex, start, end]);
 
     return (
-        <View style={{ height: ITEM_HEIGHT * 3, overflow: 'hidden' }} className="items-center justify-center">
+        <View style={{ height: ITEM_HEIGHT * 3 }} className="items-center justify-center relative">
+            {/* Dashed border lines */}
+            <View className="absolute w-full" style={{ top: ITEM_HEIGHT, height: ITEM_HEIGHT }}>
+                <View className="w-full h-[1px] bg-grey-100 mb-[58px]" />
+                <View className="w-full h-[1px] bg-grey-100" />
+            </View>
+
             <ScrollView
                 ref={scrollRef}
                 showsVerticalScrollIndicator={false}
@@ -40,25 +46,33 @@ export default function VerticalNumberPicker({ start, end, initialIndex = 0 }: P
                 decelerationRate="fast"
                 onScroll={handleScroll}
                 scrollEventThrottle={16}
+                style={{ height: ITEM_HEIGHT * 3 }}
+                contentContainerStyle={{
+                    paddingVertical: ITEM_HEIGHT,
+                }}
+                nestedScrollEnabled={true}
+                scrollEnabled={true}
+                bounces={false}
+                overScrollMode="never"
             >
-                {/* Top Spacer */}
-                <View style={{ height: ITEM_HEIGHT }} />
-
                 {numbers.map((num, index) => {
                     const isCurrent = index === currentIndex;
+                    const isAdjacent = Math.abs(index - currentIndex) === 1;
 
                     return (
                         <View
                             key={index}
                             style={{ height: ITEM_HEIGHT }}
-                            className="items-center justify-center"
+                            className="items-center justify-center px-4"
                         >
                             <Text
                                 style={{ lineHeight: ITEM_HEIGHT }}
                                 className={
                                     isCurrent
-                                        ? 'text-[32px] font-semibold text-gray-600 w-12 text-center font-mono border-y-2 border-dashed border-gray-400'
-                                        : 'text-[16px] font-semibold text-gray-500 w-12 text-center font-mono'
+                                        ? 'text-[32px] font-semibold text-grey-600 text-center'
+                                        : isAdjacent
+                                        ? 'text-base font-medium text-grey-500 text-center'
+                                        : 'text-base font-medium text-grey-500 text-center'
                                 }
                             >
                                 {num}
@@ -66,9 +80,6 @@ export default function VerticalNumberPicker({ start, end, initialIndex = 0 }: P
                         </View>
                     );
                 })}
-
-                {/* Bottom Spacer */}
-                <View style={{ height: ITEM_HEIGHT }} />
             </ScrollView>
         </View>
     );
