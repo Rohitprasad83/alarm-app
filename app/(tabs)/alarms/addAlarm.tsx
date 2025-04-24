@@ -77,13 +77,23 @@ export default function AddAlarm() {
                             className="flex-1 items-center justify-center bg-gray-100 rounded-3xl px-4 py-6 gap-5 mt-16">
                             <Text className="text-gray-600 text-base font-semibold">Alarm Time</Text>
                             <View className="flex-row items-center justify-between gap-4 h-[180px]">
-                                <VerticalNumberPicker start={1} end={12} initialIndex={5}/>
+                                <VerticalNumberPicker start={0} end={59} initialIndex={5}/>
                                 <Text className="text-gray-600 text-[32px] font-semibold">:</Text>
                                 <VerticalNumberPicker start={0} end={59} initialIndex={35}/>
-                                <View>
-                                    <Pressable onPress={flipClock}>
-                                        <Text className="text-gray-600 text-2xl font-semibold">{clock}</Text>
-                                    </Pressable>
+                                <View className="h-full items-center justify-center gap-8">
+                                    <View className="h-1/3">
+                                    </View>
+                                    <View className="h-2/3">
+                                        <Pressable onPress={flipClock}>
+                                            <Text className="text-gray-600 text-2xl font-semibold">{clock}</Text>
+                                        </Pressable>
+                                        <Pressable onPress={flipClock}>
+                                            <Text
+                                                className="text-gray-500 text-base font-semibold">{clock === 'AM' ? 'PM' : 'AM'}</Text>
+                                        </Pressable>
+
+                                    </View>
+
                                 </View>
                             </View>
                         </View>
@@ -209,7 +219,7 @@ export default function AddAlarm() {
                                             </View>
                                         </View>
                                     </View>
-                                    <SoundControl />
+                                    <SoundControl/>
                                 </View>
                             </View>
                         </View>
