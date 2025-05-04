@@ -10,34 +10,40 @@ const generalTypes = [
     {
         icon: "Waveform",
         generalText: "White Noise",
-        generalInformation: "On, 20min"
+        generalInformation: "On, 20min",
+        generalSettingsPath: 'whiteNoise'
     },
     {
         icon: "Bed",
         generalText: "Gentle wake up",
-        generalInformation: "On"
+        generalInformation: "On",
+        generalSettingsPath: 'gentleWakeUp'
     },
 
     {
         icon: "BellRinging",
         generalText: "Reminders",
-        generalInformation: ""
+        generalInformation: "",
+        generalSettingsPath: 'reminders'
     },
     {
         icon: "Vibrate",
         generalText: "Vibration",
-        generalInformation: "On"
+        generalInformation: "On",
+        generalSettingsPath: 'vibration'
     },
     {
         icon: "Prohibit",
         generalText: "Do not disturb",
-        generalInformation: "On"
+        generalInformation: "On",
+        generalSettingsPath: 'doNotDisturb'
     },
 
     {
         icon: "PawPrint",
         generalText: "Talking guide",
-        generalInformation: "On"
+        generalInformation: "On",
+        generalSettingsPath: 'talkingGuide'
     },
 
 ]
@@ -71,7 +77,7 @@ export default function Settings() {
                         <Text className="font-semibold text-2xl text-center text-gray-600">Settings</Text>
                     </View>
 
-                    <View className="bg-gray-100 p-6 rounded-3xl flex-row items-center justify-between mt-8">
+                    <View className="bg-gray-100 p-6 rounded-3xl flex-row items-center justify-between mt-4">
                         <View className="flex w-2/3 gap-4">
                             <View className="gap-2">
                                 <Text className="text-gray-600 text-xl font-semibold">Enjoy our current discount</Text>
@@ -99,7 +105,9 @@ export default function Settings() {
 
                         {generalTypes.map((type, index) => (
                             <SettingsGeneral icon={type.icon} generalText={type.generalText}
-                                             generalInformation={type.generalInformation}/>
+                                             generalInformation={type.generalInformation} key={index}
+                                                generalSettingsPath={type.generalSettingsPath}
+                            />
                         ))}
                     </View>
 
@@ -112,6 +120,7 @@ export default function Settings() {
                         {moreTypes.map((type, index) => (
                             <SettingsMore icon={type.icon} iconColor={type.iconColor}
                                           generalText={type.generalText}
+                                          key={index}
                             />
                         ))}
                     </View>

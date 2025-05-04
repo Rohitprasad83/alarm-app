@@ -4,21 +4,20 @@ export default function AlarmsLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: false // Hide header by default
+        headerShown: false
       }}
     >
       <Stack.Screen 
         name="index"
         options={{
-          headerShown: false // Explicitly hide header for index
+          headerShown: false
         }}
       />
       <Stack.Screen 
         name="addAlarm"
         options={{
-          headerShown: true, // Show header for add alarm screen
+          headerShown: false,
           presentation: 'modal',
-          headerTitle: 'Add Alarm'
         }}
       />
     </Stack>
