@@ -1,6 +1,6 @@
 import {Text, ScrollView, Pressable, View} from 'react-native';
 import {useRouter} from 'expo-router';
-import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import PhosphorIcon from "@/components/PhosphorIcon";
 import FloatingButton from "@/components/FloatingButton";
 import Alarm from "@/components/Alarm";

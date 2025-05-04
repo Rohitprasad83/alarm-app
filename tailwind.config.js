@@ -8,7 +8,7 @@ module.exports = {
     ],
     presets: [require("nativewind/preset")],
     theme: {
-        colors: {  // Add this colors wrapper
+        colors: {
             gray: {
                 100: "#F8F8F8",
                 200: "#EBEBEB",
@@ -16,6 +16,7 @@ module.exports = {
                 400: "#B3B4B6",
                 500: "#727374",
                 600: "#333537",
+                700: "#3F3F3F"
             },
             orange: {
                 100: "#FFE9D4",

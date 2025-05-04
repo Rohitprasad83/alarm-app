@@ -1,10 +1,9 @@
 import React from 'react';
-import Cat from '@/assets/images/cat.svg';
-import {View} from "react-native";
+import CatWithSun from '@/assets/images/catWithSun.svg';
 
 const AlarmPageSvgCat = () => {
     return (
-        <Cat width={153} height={108} />
+        <CatWithSun width={153} height={108} />
     );
 };
 
