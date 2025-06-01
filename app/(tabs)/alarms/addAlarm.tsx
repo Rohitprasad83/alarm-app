@@ -225,7 +225,8 @@ export default function AddAlarm() {
                         </View>
 
                         <View className="flex-1 w-full mb-16">
-                            <Pressable className="bg-gray-600 rounded-3xl items-center p-4">
+                            <Pressable className="bg-gray-600 rounded-3xl items-center p-4"
+                            >
                                 <Text className="text-gray-100 font-bold text-sm">Save</Text>
                             </Pressable>
                         </View>

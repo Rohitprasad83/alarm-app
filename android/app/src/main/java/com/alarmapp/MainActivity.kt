@@ -3,11 +3,14 @@ import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build
 import android.os.Bundle
+import android.content.Intent
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
+import com.facebook.react.modules.core.DeviceEventManagerModule
+import com.emekalites.react.alarm.notification.BundleJSONConverter
 
 import expo.modules.ReactActivityDelegateWrapper
 
@@ -21,6 +24,21 @@ class MainActivity : ReactActivity() {
     SplashScreenManager.registerOnActivity(this)
     // @generated end expo-splashscreen
     super.onCreate(null)
+  }
+
+  override fun onNewIntent(intent: Intent) {
+    super.onNewIntent(intent)
+    try {
+      val bundle = intent.extras
+      if (bundle != null) {
+        val data = BundleJSONConverter.convertToJSON(bundle)
+        reactInstanceManager.currentReactContext
+          ?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+          ?.emit("OnNotificationOpened", data.toString())
+      }
+    } catch (e: Exception) {
+      System.err.println("Exception when handling notification opened. $e")
+    }
   }
 
   /**
