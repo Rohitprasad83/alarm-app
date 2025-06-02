@@ -1,12 +1,12 @@
 import {useRouter, Stack} from 'expo-router';
-import {View, Text, ScrollView, Pressable, TouchableOpacity, TextInput, FlatList} from 'react-native';
+import {View, Text, ScrollView, Pressable, TouchableOpacity, TextInput, FlatList, Platform} from 'react-native';
 import PhosphorIcon from "@/components/PhosphorIcon";
 import VerticalNumberPicker from "@/components/VerticalNumberPicker";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {SafeAreaView} from 'react-native-safe-area-context';
 import SoundControl from '@/components/SoundControl';
 import Challenge from "@/components/Challenge";
-
+import * as Notifications from "expo-notifications";
 
 type amOrPm = "AM" | "PM";
 
@@ -36,6 +36,7 @@ const challenges = [
 ]
 
 
+
 export default function AddAlarm() {
     const [clock, setClock] = useState<amOrPm>("AM");
     const days = ["M", "T", "W", "T", "F", "S", "S"];
@@ -51,8 +52,11 @@ export default function AddAlarm() {
     };
 
 
+
+
     const router = useRouter();
 
+    
     return (
         <>
             <SafeAreaView style={{flex: 1, backgroundColor: '#EBEBEB'}}>
@@ -225,7 +229,9 @@ export default function AddAlarm() {
                         </View>
 
                         <View className="flex-1 w-full mb-16">
-                            <Pressable className="bg-gray-600 rounded-3xl items-center p-4">
+                            <Pressable className="bg-gray-600 rounded-3xl items-center p-4"
+
+                                       >
                                 <Text className="text-gray-100 font-bold text-sm">Save</Text>
                             </Pressable>
                         </View>
@@ -235,3 +241,6 @@ export default function AddAlarm() {
         </>
     );
 }
+
+
+

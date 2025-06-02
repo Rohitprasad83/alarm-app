@@ -5,6 +5,7 @@ import PhosphorIcon from "@/components/PhosphorIcon";
 import FloatingButton from "@/components/FloatingButton";
 import Alarm from "@/components/Alarm";
 import AlarmPageSvgCat from "@/components/AlarmPageSvgCat";
+import * as Notifications from "expo-notifications";
 
 
 const alarmData = {
@@ -51,6 +52,7 @@ const alarmData = {
 export default function Alarms() {
     const router = useRouter();
 
+
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: '#EBEBEB'}}>
             <ScrollView style={{flex: 1, gap: 16, padding: 16, backgroundColor: '#EBEBEB'}}>
@@ -58,7 +60,9 @@ export default function Alarms() {
                     <View className="gap-4">
                         <View className="flex-row justify-between items-center">
                             <Pressable
-                                className="bg-gray-600 px-4 py-4 rounded-full flex-row items-center justify-center space-x-2 w-32">
+                                className="bg-gray-600 px-4 py-4 rounded-full flex-row items-center justify-center space-x-2 w-32"
+
+                            >
                                 <Text className="text-gray-100 text-center font-bold">Premium</Text>
                                 <PhosphorIcon name="CaretRight" color={"white"} size={16}/>
                             </Pressable>
