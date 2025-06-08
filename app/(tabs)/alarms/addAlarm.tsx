@@ -32,30 +32,51 @@ const challenges = [
         subChallenge: "Easy",
         iconName: "MathOperations",
     },
+];
 
-]
-
-
-
-export default function AddAlarm() {
+export default function addAlarm() {
     const [clock, setClock] = useState<amOrPm>("AM");
     const days = ["M", "T", "W", "T", "F", "S", "S"];
+
+    const [isChecked, setIsChecked] = useState(false);
+    const router = useRouter();
 
     function flipClock() {
         setClock((prevClock) => (prevClock === "AM" ? "PM" : "AM"));
     }
 
-    const [isChecked, setIsChecked] = useState(false);
-
     const handleCheckboxToggle = () => {
         setIsChecked(!isChecked);
     };
 
-
-
-
-    const router = useRouter();
-
+    // useEffect(() => {
+    //     Notifications.setNotificationHandler({
+    //         handleNotification: async () => ({
+    //             shouldPlaySound: false,
+    //             shouldSetBadge: false,
+    //             shouldShowAlert: true,
+    //         }),
+    //     });
+    // }, []);
+    //
+    // useEffect(() => {
+    //     Notifications.requestPermissionsAsync();
+    // }, []);
+    //
+    // async function scheduleAlarmNotification() {
+    //     await Notifications.scheduleNotificationAsync({
+    //         content: {
+    //             title: "⏰ Alarm Ringing!",
+    //             body: "Complete your challenge to turn off the alarm.",
+    //             sound: true,
+    //             priority: Notifications.AndroidNotificationPriority.HIGH,
+    //         },
+    //         trigger: {
+    //             seconds: 5, // ⏱ replace with your logic
+    //             repeats: false,
+    //         },
+    //     });
+    // }
     
     return (
         <>
@@ -230,8 +251,8 @@ export default function AddAlarm() {
 
                         <View className="flex-1 w-full mb-16">
                             <Pressable className="bg-gray-600 rounded-3xl items-center p-4"
-
-                                       >
+                                       // onPress={scheduleAlarmNotification}
+                            >
                                 <Text className="text-gray-100 font-bold text-sm">Save</Text>
                             </Pressable>
                         </View>

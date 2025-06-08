@@ -5,7 +5,6 @@ import PhosphorIcon from "@/components/PhosphorIcon";
 import FloatingButton from "@/components/FloatingButton";
 import Alarm from "@/components/Alarm";
 import AlarmPageSvgCat from "@/components/AlarmPageSvgCat";
-import * as Notifications from "expo-notifications";
 
 
 const alarmData = {
