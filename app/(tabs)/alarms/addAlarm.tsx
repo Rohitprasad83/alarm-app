@@ -2,11 +2,10 @@ import {useRouter, Stack} from 'expo-router';
 import {View, Text, ScrollView, Pressable, TouchableOpacity, TextInput, FlatList, Platform} from 'react-native';
 import PhosphorIcon from "@/components/PhosphorIcon";
 import VerticalNumberPicker from "@/components/VerticalNumberPicker";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {SafeAreaView} from 'react-native-safe-area-context';
 import SoundControl from '@/components/SoundControl';
 import Challenge from "@/components/Challenge";
-import * as Notifications from "expo-notifications";
 
 type amOrPm = "AM" | "PM";
 
@@ -37,47 +36,18 @@ const challenges = [
 export default function addAlarm() {
     const [clock, setClock] = useState<amOrPm>("AM");
     const days = ["M", "T", "W", "T", "F", "S", "S"];
-
     const [isChecked, setIsChecked] = useState(false);
     const router = useRouter();
 
     function flipClock() {
-        setClock((prevClock) => (prevClock === "AM" ? "PM" : "AM"));
+        setClock((prevClock: amOrPm) => (prevClock === "AM" ? "PM" : "AM"));
     }
+
 
     const handleCheckboxToggle = () => {
         setIsChecked(!isChecked);
     };
 
-    // useEffect(() => {
-    //     Notifications.setNotificationHandler({
-    //         handleNotification: async () => ({
-    //             shouldPlaySound: false,
-    //             shouldSetBadge: false,
-    //             shouldShowAlert: true,
-    //         }),
-    //     });
-    // }, []);
-    //
-    // useEffect(() => {
-    //     Notifications.requestPermissionsAsync();
-    // }, []);
-    //
-    // async function scheduleAlarmNotification() {
-    //     await Notifications.scheduleNotificationAsync({
-    //         content: {
-    //             title: "⏰ Alarm Ringing!",
-    //             body: "Complete your challenge to turn off the alarm.",
-    //             sound: true,
-    //             priority: Notifications.AndroidNotificationPriority.HIGH,
-    //         },
-    //         trigger: {
-    //             seconds: 5, // ⏱ replace with your logic
-    //             repeats: false,
-    //         },
-    //     });
-    // }
-    
     return (
         <>
             <SafeAreaView style={{flex: 1, backgroundColor: '#EBEBEB'}}>
@@ -251,7 +221,6 @@ export default function addAlarm() {
 
                         <View className="flex-1 w-full mb-16">
                             <Pressable className="bg-gray-600 rounded-3xl items-center p-4"
-                                       // onPress={scheduleAlarmNotification}
                             >
                                 <Text className="text-gray-100 font-bold text-sm">Save</Text>
                             </Pressable>
